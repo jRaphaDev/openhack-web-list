@@ -15,13 +15,20 @@ class ServerComponent extends Component {
     return (
       <CardComponent
         headerTitle={"Servers"}
-        isLoading={this.props.instances.isLoading}
+        isLoading={this.props.servers.isLoading}
         refreshAction={this.props.list}
       >
         {this.props.servers.list.map((item, index) => (
-          <li className="list-group-item" key={item.url}>
-            {item.name}
-            <i className="fas fa-trash" />
+          <li
+            className="list-group-item container"
+            key={item.url}
+            style={{ display: "flex", flex: 1 }}
+          >
+            <span style={{ flex: 12 }}>{item.name}</span>
+            <i
+              className="fas fa-trash"
+              style={{ flex: 1, justifyContent: "flex-end" }}
+            />
           </li>
         ))}
       </CardComponent>

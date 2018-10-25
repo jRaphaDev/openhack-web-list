@@ -18,9 +18,16 @@ class InstanceComponent extends Component {
         refreshAction={this.props.list}
       >
         {this.props.instances.list.map((item, index) => (
-          <li className="list-group-item" key={item.url}>
-            {item.name}
-            <i className="fas fa-trash" />
+          <li
+            className="list-group-item container"
+            key={item.url}
+            style={{ display: "flex", flex: 1 }}
+          >
+            <span style={{ flex: 12 }}>{item.name}</span>
+            <i
+              className="fas fa-trash"
+              style={{ flex: 1, justifyContent: "flex-end" }}
+            />
           </li>
         ))}
       </CardComponent>
