@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-class ServerComponent extends Component {
+class InstanceComponent extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,7 +11,7 @@ class ServerComponent extends Component {
 
   RefreshButton = () => {
     let css = "fas fa-sync-alt";
-    if (this.props.servers.isLoading) {
+    if (this.props.instances.isLoading) {
       css += " fa-spin";
     }
 
@@ -33,7 +33,9 @@ class ServerComponent extends Component {
             className="card-header"
             style={{ display: "flex", flexDirection: "row" }}
           >
-            <span style={{ justifyContent: "flex-end", flex: 4 }}>Servers</span>
+            <span style={{ justifyContent: "flex-end", flex: 4 }}>
+              Instances
+            </span>
 
             {this.RefreshButton()}
 
@@ -56,7 +58,7 @@ class ServerComponent extends Component {
   }
 }
 
-function listServers() {
+function listInstances() {
   return fetch(
     "https://cors-anywhere.herokuapp.com/https://swapi.co/api/people"
   );
@@ -65,14 +67,14 @@ function listServers() {
 const mapFunctions = dispatch => {
   return {
     list: () => {
-      dispatch({ type: "FETCH_SERVERS" });
-      listServers()
+      dispatch({ type: "FETCH_INSTANCES" });
+      listInstances()
         .then(res => res.json())
         .then(data => {
-          dispatch({ type: "LIST_SERVERS", result: data.results });
+          dispatch({ type: "LIST_INSTANCES", result: data.results });
         })
         .catch(err => {
-          dispatch({ type: "FETCH_SERVER_FAILED" });
+          dispatch({ type: "FETCH_INSTANCE_FAILED" });
         });
     },
     add: () => {
@@ -95,4 +97,4 @@ const mapFunctions = dispatch => {
 export default connect(
   state => state,
   mapFunctions
-)(ServerComponent);
+)(InstanceComponent);

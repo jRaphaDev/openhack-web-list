@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
-import './App.css';
-import { Instance } from './components/instances/Instance';
-import { Server } from './components/servers/Server';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./App.css";
+import InstanceComponent from "./components/instances/InstanceComponent";
+import ServerComponent from "./components/servers/Server";
+import { Server } from "./components/servers/Server";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-body">
-
-          <div className="row">
-            <div className="App-instances">
-              <Instance></Instance>
-            </div>
-
-            <div className="App-servers">
-              <Server></Server>
-            </div>
-          </div>
+      <div className="container" style={{ flex: 1 }}>
+        <div className="row">
+          <InstanceComponent />
+          <ServerComponent />
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(state => state)(App);
