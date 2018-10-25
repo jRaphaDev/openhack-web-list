@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardComponent from "../common/CardComponent";
+import { ItemComponent } from "../common/ItemComponent";
+import { EnderecosComponent } from "../common/EnderecosComponent";
 
 class ServerComponent extends Component {
   constructor(props) {
@@ -24,10 +26,24 @@ class ServerComponent extends Component {
             key={item.url}
             style={{ display: "flex", flex: 1 }}
           >
-            <span style={{ flex: 12 }}>{item.name}</span>
+            <div
+              className="container"
+              style={{
+                flex: 20
+              }}
+            >
+              <ItemComponent name={"Nome"} value={item.name} />
+              <EnderecosComponent enderecos={item.films} />
+            </div>
             <i
               className="fas fa-trash"
-              style={{ flex: 1, justifyContent: "flex-end", cursor: "pointer" }}
+              style={{
+                flex: 1,
+                justifySelf: "center",
+                alignSelf: "center",
+                marginRight: 2,
+                cursor: "pointer"
+              }}
             />
           </li>
         ))}

@@ -8,8 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="container" style={{ flex: 1 }}>
-        <div className="row">
-          <InstanceComponent />
+        <div className="row justify-content-center">
           <ServerComponent />
         </div>
       </div>

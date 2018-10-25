@@ -8,7 +8,7 @@ class CardComponent extends Component {
 
   render() {
     return (
-      <div className="col-md-5 col-sm-5 col-lg-5" style={{ marginTop: 12 }}>
+      <div className="col-md-12 col-sm-12 col-lg-12" style={{ marginTop: 12 }}>
         <div className="card">
           <div
             className="card-header"
