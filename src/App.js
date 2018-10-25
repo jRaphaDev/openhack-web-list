@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import InstanceComponent from "./components/instances/InstanceComponent";
-import ServerComponent from "./components/servers/Server";
-import { Server } from "./components/servers/Server";
+import ServerComponent from "./components/servers/ServerComponent";
 
 class App extends Component {
   render() {
