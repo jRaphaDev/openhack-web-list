@@ -23,7 +23,7 @@ class ServerComponent extends Component {
         {this.props.servers.list.map((item, index) => (
           <li
             className="list-group-item container"
-            key={item.url}
+            key={item.name}
             style={{ display: "flex", flex: 1 }}
           >
             <div
@@ -54,7 +54,7 @@ class ServerComponent extends Component {
 
 function listServers() {
   return fetch(
-    "https://cors-anywhere.herokuapp.com/https://swapi.co/api/people"
+    "http://localhost:8080/server"
   );
 }
 
@@ -65,7 +65,8 @@ const mapFunctions = dispatch => {
       listServers()
         .then(res => res.json())
         .then(data => {
-          dispatch({ type: "LIST_SERVERS", result: data.results });
+          console.log(data)
+          dispatch({ type: "LIST_SERVERS", result: data });
         })
         .catch(err => {
           dispatch({ type: "FETCH_SERVER_FAILED" });

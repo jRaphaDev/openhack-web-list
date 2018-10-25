@@ -6,6 +6,10 @@ class CardComponent extends Component {
     super(props);
   }
 
+  add() {
+    console.log('clicou')
+  }
+
   render() {
     return (
       <div className="col-md-12 col-sm-12 col-lg-12" style={{ marginTop: 12 }}>
@@ -24,6 +28,7 @@ class CardComponent extends Component {
             />
 
             <i
+              onClick={this.add}
               className="fas fa-plus"
               style={{ padding: 5, cursor: "pointer" }}
             />
