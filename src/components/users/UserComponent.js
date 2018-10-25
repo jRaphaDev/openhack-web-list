@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardComponent from "../common/CardComponent";
 
-class ServerComponent extends Component {
+import MinecraftAPI from 'minecraft-api';
+
+
+class UserComponent extends Component {
+
   constructor(props) {
     super(props);
   }
@@ -14,61 +18,51 @@ class ServerComponent extends Component {
   render() {
     return (
       <CardComponent
-        headerTitle={"Servers"}
+        headerTitle={"Users"}
         isLoading={this.props.servers.isLoading}
-        refreshAction={this.props.list}
-      >
+        refreshAction={this.props.list}>
+        
         {this.props.servers.list.map((item, index) => (
           <li
             className="list-group-item container"
             key={item.name}
-            style={{ display: "flex", flex: 1 }}
-          >
+            style={{ display: "flex", flex: 1 }}>
+
             <span style={{ flex: 12 }}>{item.name}</span>
+            
             <i
               className="fas fa-trash"
-              style={{ flex: 1, justifyContent: "flex-end", cursor: "pointer" }}
-            />
+              style={{ flex: 1, justifyContent: "flex-end", cursor: "pointer" }} />
+
           </li>
         ))}
+
+        
       </CardComponent>
     );
   }
 }
 
-function listServers() {
+function listUsers() {
   return fetch(
-    "http://localhost:8080/server"
+    "https://mcapi.us/server/status?ip=40.114.105.185&port=25575"
   );
 }
 
 const mapFunctions = dispatch => {
   return {
     list: () => {
-      dispatch({ type: "FETCH_SERVERS" });
-      listServers()
+      dispatch({ type: "FETCH_USERS" });
+      
+      listUsers()
         .then(res => res.json())
         .then(data => {
-          console.log(data)
-          dispatch({ type: "LIST_SERVERS", result: data });
+          console.log(data, 'result');
+          dispatch({ type: "LIST_USERS", result: data.players });
         })
         .catch(err => {
           dispatch({ type: "FETCH_SERVER_FAILED" });
         });
-    },
-    add: () => {
-      fetch("https://api.com", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          instance: "NOME"
-        })
-      }).then(res => {
-        console.log(res);
-      });
     }
   };
 };
@@ -76,4 +70,4 @@ const mapFunctions = dispatch => {
 export default connect(
   state => state,
   mapFunctions
-)(ServerComponent);
+)(UserComponent);
