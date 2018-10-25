@@ -26,7 +26,7 @@ class InstanceComponent extends Component {
             <span style={{ flex: 12 }}>{item.name}</span>
             <i
               className="fas fa-trash"
-              style={{ flex: 1, justifyContent: "flex-end" }}
+              style={{ flex: 1, justifyContent: "flex-end", cursor: "pointer" }}
             />
           </li>
         ))}
