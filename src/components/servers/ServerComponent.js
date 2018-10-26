@@ -73,15 +73,12 @@ const mapFunctions = dispatch => {
         });
     },
     add: () => {
-      fetch("https://api.com", {
+      fetch("http://40.76.40.224/api/servers", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          instance: "NOME"
-        })
+        }
       }).then(res => {
         console.log(res);
       });
