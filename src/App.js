@@ -11,7 +11,6 @@ class App extends Component {
       <div className="container" style={{ flex: 1 }}>
         <div className="row justify-content-center">
           <ServerComponent />
-          <UserComponent />
         </div>
       </div>
     );

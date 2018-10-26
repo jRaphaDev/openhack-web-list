@@ -54,7 +54,7 @@ class ServerComponent extends Component {
 
 function listServers() {
   return fetch(
-    "http://localhost:8080/server"
+    "https://cors-anywhere.herokuapp.com/https://swapi.co/api/people"
   );
 }
 
@@ -65,8 +65,7 @@ const mapFunctions = dispatch => {
       listServers()
         .then(res => res.json())
         .then(data => {
-          console.log(data)
-          dispatch({ type: "LIST_SERVERS", result: data });
+          dispatch({ type: "LIST_SERVERS", result: data.results });
         })
         .catch(err => {
           dispatch({ type: "FETCH_SERVER_FAILED" });
