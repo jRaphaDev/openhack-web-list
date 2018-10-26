@@ -22,7 +22,7 @@ export const EnderecosComponent = ({ enderecos }) => (
     </thead>
     <tbody>
         <tr>
-          <td style={{ textAlign: "center" }}>{enderecos.minecraft}</td>
+          <td style={{ textAlign: "center" }}>{enderecos[0].ip}:{enderecos[0].ports}</td>
           <td style={{ textAlign: "center" }}>4</td>
           <td style={{ textAlign: "center" }}>20</td>
         </tr>
