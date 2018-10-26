@@ -18,23 +18,22 @@ class ServerComponent extends Component {
       <CardComponent
         headerTitle={"Servers"}
         isLoading={this.props.servers.isLoading}
-        refreshAction={this.props.list}
-      >
+        refreshAction={this.props.list}>
+
         {this.props.servers.list.map((item, index) => (
           <li
             className="list-group-item container"
             key={item.name}
-            style={{ display: "flex", flex: 1 }}
-          >
+            style={{ display: "flex", flex: 1 }}>
+            
             <div
               className="container"
-              style={{
-                flex: 20
-              }}
-            >
+              style={{ flex: 20 }}>
+
               <ItemComponent name={"Nome"} value={item.name} />
-              <EnderecosComponent enderecos={item.films} />
+              <EnderecosComponent enderecos={item.endpoints} />
             </div>
+
             <i
               className="fas fa-trash"
               style={{
@@ -47,6 +46,7 @@ class ServerComponent extends Component {
             />
           </li>
         ))}
+        
       </CardComponent>
     );
   }
@@ -54,7 +54,7 @@ class ServerComponent extends Component {
 
 function listServers() {
   return fetch(
-    "https://cors-anywhere.herokuapp.com/https://swapi.co/api/people"
+    "http://40.117.126.201:80/server"
   );
 }
 
@@ -65,7 +65,8 @@ const mapFunctions = dispatch => {
       listServers()
         .then(res => res.json())
         .then(data => {
-          dispatch({ type: "LIST_SERVERS", result: data.results });
+          console.log(data)
+          dispatch({ type: "LIST_SERVERS", result: data });
         })
         .catch(err => {
           dispatch({ type: "FETCH_SERVER_FAILED" });

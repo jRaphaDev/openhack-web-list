@@ -11,6 +11,7 @@ class App extends Component {
       <div className="container" style={{ flex: 1 }}>
         <div className="row justify-content-center">
           <ServerComponent />
+          <InstanceComponent />
         </div>
       </div>
     );

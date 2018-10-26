@@ -17,7 +17,8 @@ class InstanceComponent extends Component {
       <CardComponent
         headerTitle={"Instances"}
         isLoading={this.props.instances.isLoading}
-        refreshAction={this.props.list}>
+        refreshAction={this.props.list}
+        add={this.props.add}>
 
         {this.props.instances.list.map(item => (
 
@@ -30,7 +31,8 @@ class InstanceComponent extends Component {
             
             <i
               className="fas fa-trash"
-              style={{ flex: 1, justifyContent: "flex-end", cursor: "pointer" }}/>
+              style={{ flex: 1, justifyContent: "flex-end", cursor: "pointer" }}
+              onClick={() => this.props.delete()}/>
 
           </li>
         ))}
@@ -41,7 +43,7 @@ class InstanceComponent extends Component {
 
 function listInstances() {
   return fetch(
-    "http://localhost:8080/instance"
+    "http://40.117.126.201:80/instance"
   );
 }
 
@@ -61,7 +63,7 @@ const mapFunctions = dispatch => {
     },
 
     add: () => {
-      fetch('http://localhost:8080/instance', {
+      fetch('http://40.117.126.201:80/instance', {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -75,8 +77,8 @@ const mapFunctions = dispatch => {
       });
     },
 
-    delete: (instance) => {
-      fetch(`http://localhost:8080/instance/${instance}`, {
+    delete: () => {
+      fetch('http://40.117.126.201:80/instance/', {
         method: "DELETE"
       }).then(res => {
         console.log(res);
