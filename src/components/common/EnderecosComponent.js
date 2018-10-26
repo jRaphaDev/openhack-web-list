@@ -23,8 +23,8 @@ export const EnderecosComponent = ({ enderecos }) => (
     <tbody>
         <tr>
           <td style={{ textAlign: "center" }}>{enderecos[0].ip}:{enderecos[0].ports}</td>
-          <td style={{ textAlign: "center" }}>4</td>
-          <td style={{ textAlign: "center" }}>20</td>
+          <td style={{ textAlign: "center" }}>{enderecos[0].online}</td>
+          <td style={{ textAlign: "center" }}>{enderecos[0].max_cap}</td>
         </tr>
     </tbody>
   </table>
