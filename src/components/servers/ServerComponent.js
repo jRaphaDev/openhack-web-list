@@ -54,7 +54,7 @@ class ServerComponent extends Component {
 
 function listServers() {
   return fetch(
-    "http://40.117.126.201:80/server"
+    "http://40.76.40.224/api/servers"
   );
 }
 

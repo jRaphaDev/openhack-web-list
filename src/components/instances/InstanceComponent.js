@@ -43,7 +43,7 @@ class InstanceComponent extends Component {
 
 function listInstances() {
   return fetch(
-    "http://40.117.126.201:80/instance"
+    "http://40.76.40.224/api/servers"
   );
 }
 
@@ -63,22 +63,19 @@ const mapFunctions = dispatch => {
     },
 
     add: () => {
-      fetch('http://40.117.126.201:80/instance', {
+      fetch('http://40.76.40.224/api/servers', {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          number: 1
-        })
+        }
       }).then(res => {
         console.log(res);
       });
     },
 
     delete: () => {
-      fetch('http://40.117.126.201:80/instance/', {
+      fetch('http://40.76.40.224/api/servers', {
         method: "DELETE"
       }).then(res => {
         console.log(res);
